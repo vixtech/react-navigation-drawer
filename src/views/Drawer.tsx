@@ -77,6 +77,7 @@ type Props = {
   onOpen: () => void;
   onClose: () => void;
   onGestureRef?: (ref: PanGestureHandler | null) => void;
+  onOverlayRef?: (ref: Animated.View | null) => void;
   gestureEnabled: boolean;
   drawerPosition: 'left' | 'right';
   drawerType: 'front' | 'back' | 'slide';
@@ -488,6 +489,7 @@ export default class Drawer extends React.PureComponent<Props> {
       drawerStyle,
       overlayStyle,
       onGestureRef,
+      onOverlayRef,
       renderDrawerContent,
       renderSceneContent,
       gestureHandlerProps,
@@ -545,6 +547,7 @@ export default class Drawer extends React.PureComponent<Props> {
                 onHandlerStateChange={this.handleTapStateChange}
               >
                 <Animated.View
+                  ref={onOverlayRef}
                   style={[
                     styles.overlay,
                     {

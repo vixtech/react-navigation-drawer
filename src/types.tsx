@@ -70,6 +70,7 @@ export type NavigationDrawerConfig = {
   overlayColor?: ThemedColor;
   screenContainerStyle?: StyleProp<ViewStyle>;
   detachInactiveScreens?: boolean;
+  onOverlayRef?: (ref: Animated.View | null) => void;
 };
 
 export type NavigationDrawerRouterConfig = {

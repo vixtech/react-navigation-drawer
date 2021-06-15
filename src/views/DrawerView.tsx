@@ -6,6 +6,7 @@ import {
   ThemeContext,
   NavigationScreenProp,
 } from 'react-navigation';
+import Animated from 'react-native-reanimated';
 import { ScreenContainer } from 'react-native-screens';
 
 import * as DrawerActions from '../routers/DrawerActions';
@@ -32,6 +33,7 @@ type DrawerOptions = {
   statusBarAnimation: 'slide' | 'none' | 'fade';
   onDrawerClose?: () => void;
   onDrawerOpen?: () => void;
+  onOverlayRef?: (ref: Animated.View | null) => void;
   sceneContainerStyle?: ViewStyle;
   edgeWidth: number;
   hideStatusBar?: boolean;
@@ -274,6 +276,7 @@ export default class DrawerView extends React.PureComponent<Props, State> {
           onOpen={this.handleDrawerOpen}
           onClose={this.handleDrawerClose}
           onGestureRef={this.setDrawerGestureRef}
+          onOverlayRef={this.props.navigationConfig.onOverlayRef}
           gestureHandlerProps={gestureHandlerProps}
           drawerType={drawerType}
           drawerPosition={this.props.navigationConfig.drawerPosition}

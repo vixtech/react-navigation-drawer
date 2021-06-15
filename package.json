@@ -11,8 +11,11 @@
     "lib"
   ],
   "scripts": {
-    "prepare": "bob build",
-    "clean": "del lib"
+    "lib:lint": "eslint --ext '.js,.ts,.tsx' .",
+    "lib:typescript": "tsc --noEmit --composite false",
+    "lib:test": "jest",
+    "lib:build": "bob build",
+    "lib:clean": "del lib"
   },
   "sideEffects": false,
   "publishConfig": {
@@ -27,21 +30,27 @@
     "drawer",
     "material"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/react-navigation/drawer.git"
-  },
-  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/react-navigation/drawer/issues"
-  },
-  "homepage": "https://github.com/react-navigation/drawer#readme",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@babel/runtime": "^7.12.1",
+    "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/bob": "^0.16.2",
+    "@types/jest": "^26.0.15",
     "@types/react": "^16.9.53",
     "@types/react-native": "^0.63.30",
+    "babel-jest": "^26.6.1",
+    "commitlint": "^11.0.0",
+    "core-js": "^3.6.5",
     "del-cli": "^3.0.1",
+    "eslint": "^7.12.0",
+    "eslint-config-satya164": "^3.1.8",
+    "jest": "^26.6.1",
+    "prettier": "^2.1.2",
     "react": "~16.13.1",
     "react-lifecycles-compat": "^3.0.4",
     "react-native": "~0.63.2",
@@ -73,5 +82,26 @@
         }
       ]
     ]
+  },
+  "resolutions": {
+    "react": "~16.13.1",
+    "react-native": "~0.63.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "/__tests__/.*\\.(test|spec)\\.(js|tsx?)$",
+    "transform": {
+      "^.+\\.(js|ts|tsx)$": "babel-jest"
+    },
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ],
+    "preset": "react-native"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }
